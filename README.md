@@ -7,4 +7,9 @@
 お互いの演奏可能曲がすぐに把握できるので、ミュージシャン同士が組んで演奏する時の曲決めをスムーズに行うことができます。
 
 1.機能一覧
+
 https://docs.google.com/spreadsheets/d/1LivSmoTkIhffaIimKDPSTkly_LgzpkRZyNFDS3Y0ZLw/edit?usp=sharing
+
+2.ワイヤーフレーム、画面遷移図
+
+https://www.figma.com/file/i7rv6o3yEHSZhF1s8WVPP6/Ready-to-Session-Wireframe?node-id=0%3A1
