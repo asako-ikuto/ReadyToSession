@@ -16,4 +16,4 @@ https://www.figma.com/file/i7rv6o3yEHSZhF1s8WVPP6/Ready-to-Session-Wireframe?nod
 
 3.DB設計図(ER図)
 
-![DB設計図](https://user-images.githubusercontent.com/59917584/173264141-4871145a-a357-4b1c-891a-b4329b0bc085.jpg)
+![DB設計図20220614](https://user-images.githubusercontent.com/59917584/173462409-6be0fbe6-ef29-4ecf-a59a-3d385c2beb19.jpg)
