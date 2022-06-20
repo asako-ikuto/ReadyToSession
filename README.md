@@ -13,3 +13,7 @@ https://docs.google.com/spreadsheets/d/1LivSmoTkIhffaIimKDPSTkly_LgzpkRZyNFDS3Y0
 2.ワイヤーフレーム、画面遷移図
 
 https://www.figma.com/file/i7rv6o3yEHSZhF1s8WVPP6/Ready-to-Session-Wireframe?node-id=0%3A1
+
+3.DB設計図(ER図)
+
+![DB設計図20220614](https://user-images.githubusercontent.com/59917584/173462409-6be0fbe6-ef29-4ecf-a59a-3d385c2beb19.jpg)
