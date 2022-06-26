@@ -1,32 +1,62 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app>
+    <v-app-bar
+      app
+      color="success"
+      class="hidden-sm-and-down"
+      dark
+    >
+      <router-link to="/" class="text-decoration-none">
+        <div class="d-flex align-center">
+          <v-img :src="logo_image" 
+                  alt="ReadyToSession Logo"
+                  class="shrink mr-4"
+                  contain
+                  transition="scale-transition"
+                  width="40"></v-img>
+          <v-img :src="logo_name" 
+                  alt="ReadyToSession"
+                  class="shrink mt-1"
+                  contain
+                  min-width="200"
+                  transition="scale-transition"
+                  width="200"></v-img>
+        </div>
+      </router-link>
+
+      <v-spacer></v-spacer>
+
+      <router-link to="/signup" class="text-decoration-none">
+        <v-btn
+        text
+      >
+          <span class="mr-2 text-subtitle-1">登録する</span>
+        </v-btn>
+      </router-link>
+
+      <router-link to="/login" class="text-decoration-none">
+        <v-btn
+        text
+      >
+          <span class="mr-2 text-subtitle-1">ログイン</span>
+        </v-btn>
+      </router-link>     
+    </v-app-bar>
+
+    <v-main>
+      <router-view/>
+    </v-main>
+  </v-app>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
 
-#nav {
-  padding: 30px;
-}
+export default {
+  name: 'App',
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+  data: () => ({
+    logo_image: require("./assets/logo.svg"),
+    logo_name: require("./assets/logo_name.png"),
+  }),
+};
+</script>
