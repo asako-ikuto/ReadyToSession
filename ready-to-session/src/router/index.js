@@ -43,6 +43,21 @@ const routes = [
     name: 'Index',
     component: () => import('../views/Index.vue')
   },
+  {
+    path: '/add-song',
+    name: 'AddSong',
+    component: () => import('../views/AddSong.vue')
+  },
+  {
+    path: '/edit',
+    name: 'Edit',
+    component: () => import('../views/Edit.vue')
+  },
+  {
+    path: '/userlist',
+    name: 'Userlist',
+    component: () => import('../views/Userlist.vue')
+  },
 ]
 
 const router = new VueRouter({
