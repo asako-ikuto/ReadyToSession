@@ -6,8 +6,7 @@
       class="hidden-sm-and-down"
       dark
     >
-      <slot></slot>
-      <!-- <router-link to="/" class="text-decoration-none">
+      <router-link to="/" class="text-decoration-none">
         <div class="d-flex align-center">
           <v-img :src="require('./assets/logo.svg')" 
                   alt="ReadyToSession Logo"
@@ -24,7 +23,7 @@
                   width="200"></v-img>
           
         </div>
-      </router-link> -->
+      </router-link>
 
       <v-spacer></v-spacer>
 
