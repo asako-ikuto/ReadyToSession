@@ -58,6 +58,11 @@ const routes = [
     name: 'Userlist',
     component: () => import('../views/Userlist.vue')
   },
+  {
+    path: '/user-songlist',
+    name: 'UserSonglist',
+    component: () => import('../views/UserSonglist.vue')
+  },
 ]
 
 const router = new VueRouter({

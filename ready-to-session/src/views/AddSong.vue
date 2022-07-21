@@ -1,26 +1,33 @@
 <template>
   <div class="add-song">
+    <!--PC表示-->
+      <!--sidebar-->
+      <Sidebar>
+        <router-link to="/" class="text-decoration-none">
+                <v-img :src="logo_name" 
+                        alt="ReadyToSession"
+                        class="shrink my-4 mx-1"
+                        contain
+                        min-width="200"
+                        transition="scale-transition"
+                        width="200"></v-img>      
+              </router-link>
+      </Sidebar>
+    <!--SP表示-->
+    <v-row class="hidden-md-and-up">
+      <!--Bottom Nav-->
+        <BottomNav></BottomNav>
+    </v-row>
+    <!--PC/SP共通content-->
     <v-form v-model="valid">
       <v-container>
-        <v-row class="text-left hidden-md-and-up" style="margin-top:-56px;">
+        <v-row style="max-width:500px" class="mx-auto text-center my-4">
           <v-col
-          cols="12" class="text-left"
-        >
-            <router-link to="/index" class="text-decoration-none">
-              <v-btn
-                text>
-                <span class="mr-2 text-subtitle-1 font-weight-bold">back</span>
-              </v-btn></router-link>
-          </v-col>
-        </v-row>
-        <v-row class="text-center">
-          <v-col class="my-4">
-            <p class="text-h4 mb-6">
+            cols="12">
+            <p class="text-h4 font-weight-bold my-4"> 
               演奏できる曲を追加
             </p>
           </v-col>
-        </v-row>
-        <v-row style="max-width:500px" class="mx-auto">
           <v-col
             cols="12"
           >
@@ -63,9 +70,12 @@
           <v-col
           cols="12"
           >
-            <router-link to="/index" class="text-decoration-none">
-              <v-btn elevation="2" class="px-10" color="success" rounded large block style="font-size:1.2rem;">追加する</v-btn>
-            </router-link>
+            <v-btn elevation="2" 
+                      class="px-10" 
+                      color="success" 
+                      rounded large block 
+                      style="font-size:1.2rem;"
+                      to="/index">追加する</v-btn>
           </v-col>
         </v-row>
       </v-container>
@@ -74,11 +84,17 @@
 </template>
 
 <script>
+import Sidebar from "../components/Sidebar";
+import BottomNav from "../components/BottomNav";
 
 export default {
-  name: 'Index',
-
+  name: 'AddSong',
+  components: {
+    Sidebar,
+    BottomNav
+  },
   data: () => ({
+    logo_name: require("../assets/logo_name.png"),
     status: '1',
   }),
 };

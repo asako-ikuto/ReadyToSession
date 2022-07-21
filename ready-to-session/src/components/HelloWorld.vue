@@ -1,21 +1,16 @@
 <template>
   <v-container>
     <!--header-->
-    <v-app-bar
-      app
-      color="success"
-      class="hidden-sm-and-down"
-      dark
-    >
+    <Header>
       <router-link to="/" class="text-decoration-none">
         <div class="d-flex align-center">
-          <v-img :src="require('../assets/logo.svg')" 
+          <v-img :src="logo" 
                   alt="ReadyToSession Logo"
                   class="shrink mr-4"
                   contain
                   transition="scale-transition"
                   width="40"></v-img>
-          <v-img :src="require('../assets/logo_name.png')"
+          <v-img :src="logo_name"
                   alt="ReadyToSession"
                   class="shrink mt-1"
                   contain
@@ -23,27 +18,9 @@
                   transition="scale-transition"
                   width="200"></v-img>
         </div>
-      </router-link>
-
-      <v-spacer></v-spacer>
-
-      <router-link to="/signup" class="text-decoration-none">
-        <v-btn
-        text
-      >
-          <span class="mr-2 text-subtitle-1">登録する</span>
-        </v-btn>
-      </router-link>
-
-      <router-link to="/login" class="text-decoration-none">
-        <v-btn
-        text
-      >
-          <span class="mr-2 text-subtitle-1">ログイン</span>
-        </v-btn>
-      </router-link>     
-    </v-app-bar>
-    <!--sp表示-->
+      </router-link> 
+    </Header>
+    <!--sp表示content-->
     <v-row class="text-center hidden-md-and-up">
       <v-col class="my-2">
         <h1 class="display-2 font-weight-bold mb-6">
@@ -55,7 +32,7 @@
       </v-col>
       <v-col cols="12">
         <v-img
-          :src="require('../assets/main_image.jpg')"
+          :src="main_image"
           class="mb-3"
           contain
           height="300"
@@ -65,16 +42,19 @@
         class="mb-5"
         cols="12"
       >
-        <router-link to="/login" class="text-decoration-none">
-          <v-btn elevation="2" class="px-10" color="success" rounded large block style="font-size:1.2rem;">始める</v-btn>
-        </router-link>
+        <v-btn elevation="2" 
+               class="px-10" 
+               color="success" 
+               rounded large block 
+               style="font-size:1.2rem;" 
+               to="/login">始める</v-btn>
       </v-col>
     </v-row>
-    <!--PC表示-->
+    <!--PC表示content-->
     <v-row class="text-center hidden-sm-and-down"> 
       <v-col cols="6" class="mt-10 mx-0">
         <v-img
-          :src="require('../assets/main_image.jpg')"
+          :src="main_image"
           class="mb-3"
           contain
           height="300"
@@ -87,18 +67,29 @@
         <h2 class="headline mb-10">
           演奏できる曲リストを作ってシェアしよう
         </h2>
-        <router-link to="/login" class="text-decoration-none">
-          <v-btn elevation="2" class="px-10" color="success" rounded large block style="font-size:1.2rem;">始める</v-btn>
-        </router-link>
+        <v-btn elevation="2" 
+               class="px-10" 
+               color="success" 
+               rounded large block 
+               style="font-size:1.2rem;" 
+               to="/login">始める</v-btn>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
+import Header from "../components/Header";
+
   export default {
     name: 'HelloWorld',
+    components: {
+      Header
+    },
     data: () => ({
+      logo: require("../assets/logo.svg"),
+      logo_name: require("../assets/logo_name.png"),
+      main_image: require('../assets/main_image.jpg'),
     }),
   }
 </script>

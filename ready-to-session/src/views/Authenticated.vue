@@ -15,14 +15,14 @@
           </p>
         </v-col>
         <v-col
-        cols="12"
-      >
-          <router-link to="/login" class="text-decoration-none">
-            <v-row justify="center" class="px-2">
-              <v-btn elevation="2" class="px-10" color="success" rounded large block style="font-size:1.2rem;">ログインしてはじめる</v-btn>
-            </v-row>
-          </router-link>
-        </v-col>
+        cols="12">
+          <v-btn elevation="2" 
+                        class="px-10" 
+                        color="success" 
+                        rounded large block 
+                        style="font-size:1.2rem;"
+                        to="/login">ログインしてはじめる</v-btn>
+        </v-col> 
       </v-row>
     </v-container>
   </div>

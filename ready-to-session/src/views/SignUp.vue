@@ -2,73 +2,30 @@
   <div class="signup">
     <!--header-->
     <Header>
-      <!-- <router-link to="/" class="text-decoration-none">
-        <div class="d-flex align-center">
-          <v-img :src="require('../assets/logo.svg')" 
-                  alt="ReadyToSession Logo"
-                  class="shrink mr-4"
-                  contain
-                  transition="scale-transition"
-                  width="40"></v-img>
-          <v-img :src="require('../assets/logo_name.png')"
-                  alt="ReadyToSession"
-                  class="shrink mt-1"
-                  contain
-                  min-width="200"
-                  transition="scale-transition"
-                  width="200"></v-img>
-          
-        </div>
-      </router-link>  -->
-    </Header>
-    <!-- <v-app-bar
-      app
-      color="success"
-      class="hidden-sm-and-down"
-      dark
-    >
       <router-link to="/" class="text-decoration-none">
         <div class="d-flex align-center">
-          <v-img :src="require('../assets/logo.svg')" 
+          <v-img :src="logo" 
                   alt="ReadyToSession Logo"
                   class="shrink mr-4"
                   contain
                   transition="scale-transition"
                   width="40"></v-img>
-          <v-img :src="require('../assets/logo_name.png')"
+          <v-img :src="logo_name"
                   alt="ReadyToSession"
                   class="shrink mt-1"
                   contain
                   min-width="200"
                   transition="scale-transition"
-                  width="200"></v-img>
+                  width="200"></v-img>        
         </div>
-      </router-link>
-
-      <v-spacer></v-spacer>
-
-      <router-link to="/signup" class="text-decoration-none">
-        <v-btn
-        text
-      >
-          <span class="mr-2 text-subtitle-1">登録する</span>
-        </v-btn>
-      </router-link>
-
-      <router-link to="/login" class="text-decoration-none">
-        <v-btn
-        text
-      >
-          <span class="mr-2 text-subtitle-1">ログイン</span>
-        </v-btn>
-      </router-link>     
-    </v-app-bar> -->
-    <!--main-->
+      </router-link> 
+    </Header>
+    <!--content-->
     <v-form v-model="valid">
       <v-container>
         <v-row class="text-center">
           <v-col class="my-6">
-            <p class="text-h3 mb-6">
+            <p class="text-h4 font-weight-bold mb-6">
               新規登録
             </p>
           </v-col>
@@ -127,9 +84,12 @@
           <v-col
           cols="12"
         >
-            <router-link to="/send-email" class="text-decoration-none">
-              <v-btn elevation="2" class="px-10" color="success" rounded large block style="font-size:1.2rem;">認証メールを送信する</v-btn>
-            </router-link>
+            <v-btn elevation="2" 
+                   class="px-10" 
+                   color="success" 
+                   rounded large block 
+                   style="font-size:1.2rem;"
+                   to="/send-email">認証メールを送信する</v-btn>
           </v-col>
           <v-col
           cols="12" class="text-right"
@@ -150,10 +110,9 @@ export default {
   components: {
     Header
   },
-
-  // data: () => ({
-  //   logo_image: require("../assets/logo.svg"),
-  //   logo_name: require("../assets/logo_name.png"),
-  // }),
+  data: () => ({
+    logo: require("../assets/logo.svg"),
+    logo_name: require("../assets/logo_name.png"),
+  }),
 };
 </script>

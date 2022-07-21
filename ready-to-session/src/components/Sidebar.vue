@@ -1,53 +1,38 @@
 <template>
-  <div class="header">
-    <v-app-bar
-        app
-        color="success"
-        class="hidden-sm-and-down"
-        dark
-      >
-        <router-link to="/" class="text-decoration-none">
-          <div class="d-flex align-center">
-            <v-img :src="logo_image" 
-                    alt="ReadyToSession Logo"
-                    class="shrink mr-4"
-                    contain
-                    transition="scale-transition"
-                    width="40"></v-img>
-            <v-img :src="logo_name" 
-                    alt="ReadyToSession"
-                    class="shrink mt-1"
-                    contain
-                    min-width="200"
-                    transition="scale-transition"
-                    width="200"></v-img>
-          </div>
-        </router-link>
-
-        <v-spacer></v-spacer>
-
-        <router-link to="/signup" class="text-decoration-none">
-          <v-btn
-          text
-        >
-            <span class="mr-2 text-subtitle-1">登録する</span>
-          </v-btn>
-        </router-link>
-
-        <router-link to="/login" class="text-decoration-none">
-          <v-btn
-          text
-        >
-            <span class="mr-2 text-subtitle-1">ログイン</span>
-          </v-btn>
-        </router-link>     
-      </v-app-bar>       
+  <div class="sidebar">
+    <v-navigation-drawer app mobile-breakpoint="960" class="text-light" color="success" dark>
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title class="title">
+              <slot></slot>
+            </v-list-item-title>
+            <v-divider></v-divider>
+          </v-list-item-content>      
+        </v-list-item>
+        <v-list nav>
+          <v-list-item v-for="nav_list in nav_lists" :key="nav_list.name" :to="nav_list.link" link>
+              <v-list-item-icon>
+              <v-icon>{{ nav_list.icon }}</v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title>{{ nav_list.name }}</v-list-item-title>
+            </v-list-item-content> 
+          </v-list-item>
+        </v-list>
+      </v-navigation-drawer>     
   </div>
 
 </template>
 
 <script>
 export default {
-  name: 'Header',
+  name: 'Sidebar',
+  data: () => ({
+    nav_lists:[
+      {name: '演奏できる曲リスト', icon: 'mdi-playlist-music', link: '/index'},
+      {name: 'ユーザを探す', icon: 'mdi-account-search', link: '/userlist'},
+      {name: 'ログアウト', icon: 'mdi-logout', link: '/login'},
+    ],
+  }),
 };
 </script>
