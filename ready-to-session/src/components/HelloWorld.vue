@@ -67,6 +67,9 @@
         <h2 class="headline mb-10">
           演奏できる曲リストを作ってシェアしよう
         </h2>
+        <h2 class="headline mb-10">
+          {{ message }}
+        </h2>
         <v-btn elevation="2" 
                class="px-10" 
                color="success" 
@@ -80,6 +83,7 @@
 
 <script>
 import Header from "../components/Header";
+import axios from 'axios'
 
   export default {
     name: 'HelloWorld',
@@ -90,6 +94,16 @@ import Header from "../components/Header";
       logo: require("../assets/logo.svg"),
       logo_name: require("../assets/logo_name.png"),
       main_image: require('../assets/main_image.jpg'),
+      message: '',
     }),
+    created() {
+      this.hello();
+    },
+    methods: {
+      async hello() {
+        const res = await axios.get('api/hello');
+        this.message = res.data;
+      }
+    }
   }
 </script>
