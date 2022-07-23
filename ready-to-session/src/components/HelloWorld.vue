@@ -102,6 +102,8 @@ import axios from 'axios'
     methods: {
       async hello() {
         const res = await axios.get('api/hello');
+        console.log(res)
+        console.log(res.status)
         this.message = res.data;
       }
     }
