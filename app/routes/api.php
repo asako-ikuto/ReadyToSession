@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,4 +19,8 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::get('/hello', 'HelloController@index');
+
+Route::post('/register', 'RegisterController@create');
+// Route::get('/hello', 'HelloController@index');
+
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');

@@ -16,7 +16,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'screen_name', 'password',
     ];
 
     /**
@@ -40,5 +40,10 @@ class User extends Authenticatable implements MustVerifyEmail
     function IdentityProviders()
     {
         return $this->hasMany(IdentityProvider::class);
+    }
+
+    public function playable_lists()
+    {
+        return $this->belongsToMany('App\Song', 'playable_lists')->withTimestamps();
     }
 }

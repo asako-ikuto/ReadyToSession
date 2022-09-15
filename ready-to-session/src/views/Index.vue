@@ -121,13 +121,6 @@
             class="d-inline-block mr-4"
             style="min-width:450px;"
           ></v-text-field>
-          <!-- <v-btn elevation="2" 
-                     class="px-10" 
-                     color="success" 
-                     rounded large 
-                     style="font-size:1.2rem;"
-                     to="/add-song"><v-icon left>mdi-plus</v-icon>追加する
-              </v-btn> -->
           <v-tabs grow class="mx-auto" background-color="transparent" color="success">
             <v-tab><span style="font-size:1.1rem">すべて</span></v-tab>
             <v-tab><span style="font-size:1.1rem">演奏可能</span></v-tab>
@@ -136,35 +129,6 @@
           </v-tabs>
         </v-col>
         <v-col cols="12">
-          <!-- <v-data-table
-            :headers="headers"
-            :items="playableSongs"
-            :items-per-page="5"
-            class="elevation-1"
-          >
-          <template v-slot:item.actions="{ item }">
-            <v-menu
-              top
-              :close-on-click="closeOnClick">
-                <template v-slot:activator="{ on, attrs }">
-                  <v-btn
-                    v-bind="attrs"
-                    v-on="on"
-                    icon>
-                    <v-icon>mdi-dots-horizontal</v-icon>
-                  </v-btn>
-                </template>
-                      <v-list>
-                        <v-list-item to="/edit">
-                          <v-list-item-title @click="editItem(item)">編集する</v-list-item-title>
-                        </v-list-item>
-                        <v-list-item>
-                          <v-list-item-title @click="deleteItem(item)">削除する</v-list-item-title>
-                        </v-list-item>
-                      </v-list>
-                    </v-menu>
-            </template>      
-          </v-data-table> -->
           <v-simple-table style="margin-bottom:200px;">
             <template v-slot:default>
               <thead>
