@@ -135,12 +135,19 @@ export const actions = {
     }
   },
   async twitterLogin() {
+    // try {
+    //   await this.$axios.$get("/sanctum/csrf-cookie").then(async (res) => {
+    //     const response = await this.$axios.$get("/login/twitter");
+    //     console.log(response);
+    //     window.location.href = response;
+    //   });
+    // } catch (error) {
+    //   console.log(error);
+    // }
+
     try {
-      await this.$axios.$get("/sanctum/csrf-cookie").then(async (res) => {
-        const response = await this.$axios.$get("/login/twitter");
-        console.log(response);
-        window.location.href = response;
-      });
+      const response = await this.$axios.$get("/login/twitter");
+      window.location.href = response;
     } catch (error) {
       console.log(error);
     }
