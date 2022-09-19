@@ -23,8 +23,7 @@ Route::post('/login', 'LoginController@login');
 Route::post('/logout', 'LoginController@logout');
 Route::post('/register', 'RegisterController@create');
 
-Route::get('/login/{provider}', 'LoginController@redirectToProvider');
-Route::get('/login/{provider}/callback', 'LoginController@handleProviderCallback');
+
 Route::get('/auth', 'LoginController@isAuth');
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
@@ -45,4 +44,9 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 Route::group(['middleware' => ['can:is_admin']], function () {
     Route::resource('artists', 'ArtistController', ['only' => ['store','update', 'destroy']]);
     Route::resource('songs', 'SongController', ['only' => ['store','update', 'destroy']]);
+});
+
+Route::group(['middleware' => ['web']], function() {
+    Route::get('/login/{provider}', 'LoginController@redirectToProvider');
+    Route::get('/login/{provider}/callback', 'LoginController@handleProviderCallback');
 });

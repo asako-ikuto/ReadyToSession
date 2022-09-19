@@ -43,6 +43,7 @@ class LoginController extends Controller
     public function isAuth()
     {
         $user = auth()->user();
+
         if($user) {
             return response()->json(['result' => true], 200);
 
@@ -65,7 +66,6 @@ class LoginController extends Controller
         try {
             $user = Socialite::driver($provider)->stateless()->user();
         } catch (\Exception $e) {
-            Log::debug($e);
             abort(500, $e->getMessage());
         }
         $authUser = $this->findOrCreateUser($user, $provider);
@@ -79,18 +79,24 @@ class LoginController extends Controller
                     ->whereProviderId($providerUser->getId())
                     ->first();
 
-        return $account->user;
-
         if ($account) {
             return $account->user;
         } else {
+
             $user = User::whereEmail($providerUser->getEmail())->first();
 
             if (!$user) {
-                $user = User::create([
-                    'email' => $providerUser->getEmail(),
-                    'name'  => $providerUser->getName(),
-                ]);
+                if($provider == 'google'){
+                    $user = User::create([
+                        'email' => $providerUser->getEmail(),
+                        'name'  => $providerUser->getName(),
+                    ]);
+
+                } else if($provider == 'twitter'){
+                    $user = User::create([
+                        'name'  => $providerUser->getName(),
+                    ]);
+                }
             }
 
             $user->IdentityProviders()->create([
@@ -100,6 +106,8 @@ class LoginController extends Controller
 
             return $user;
         }
+
+
 
         // $existingUser = User::whereEmail($providerUser->getEmail())->first();
 
