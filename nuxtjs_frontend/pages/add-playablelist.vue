@@ -109,7 +109,7 @@
 <script>
 export default {
   name: "AddSongPage",
-  middleware: ["auth"],
+  middleware: ["isauth"],
   async fetch() {
     await this.$store.dispatch("playablelists/fetchPlayableList");
     await this.$store.dispatch("songs/fetchSongList");

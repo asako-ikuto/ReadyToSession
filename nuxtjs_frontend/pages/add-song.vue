@@ -57,7 +57,7 @@
 export default {
   name: "AddSongPage",
   layout: "adminDefault",
-  middleware: ["admin", "auth"],
+  middleware: ["admin", "isauth"],
   mounted() {
     //バリデーションリセット
     this.$refs.addSong.resetValidation();

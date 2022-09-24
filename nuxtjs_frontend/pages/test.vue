@@ -7,6 +7,6 @@
 <script>
 export default {
   name: "InspirePage",
-  middleware: ["authtest"],
+  middleware: ["isauth"],
 };
 </script>

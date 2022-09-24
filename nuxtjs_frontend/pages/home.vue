@@ -122,7 +122,7 @@
 <script>
 export default {
   name: "HomePage",
-  middleware: ["auth"],
+  middleware: ["isauth"],
   async fetch() {
     await this.$store.dispatch("playablelists/fetchPlayableListDetail");
   },

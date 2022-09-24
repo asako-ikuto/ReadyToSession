@@ -30,7 +30,12 @@ class LoginController extends Controller
 
     public function isAdmin()
     {
-        $user_admin_flag = auth()->user()->admin_flag;
+        $user = auth()->user();
+        if(!$user){
+            return response()->json(['result' => false], 200);
+        }
+
+        $user_admin_flag = $user->admin_flag;
         if($user_admin_flag == 1) {
             return response()->json(['result' => true], 200);
         } elseif($user_admin_flag == 0) {
@@ -45,6 +50,18 @@ class LoginController extends Controller
         $user = auth()->user();
 
         if($user) {
+            return response()->json(['result' => true], 200);
+
+        } else {
+            return response()->json(['result' => false], 200);
+        }
+    }
+
+    public function hasScreenName()
+    {
+        $screen_name = auth()->user()->screen_name;
+
+        if($screen_name) {
             return response()->json(['result' => true], 200);
 
         } else {

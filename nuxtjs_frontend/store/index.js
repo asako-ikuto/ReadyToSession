@@ -106,6 +106,31 @@ export const actions = {
       console.log(error);
     }
   },
+  async registerScreenName({ commit }, payload) {
+    console.log(payload.screenName);
+
+    try {
+      await this.$axios.$get("/sanctum/csrf-cookie").then(async (res) => {
+        const response = await this.$axios
+          .$post("/register-screen-name", {
+            screen_name: payload.screenName,
+          })
+          .then(async (res) => {
+            console.log(res);
+            if (res.status == 400) {
+              commit("setErrors", {
+                errors: res.errors,
+              });
+            } else {
+              commit("clearErrors");
+              this.$router.push("/home");
+            }
+          });
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  },
   async isAdmin() {
     try {
       await this.$axios.$get("/sanctum/csrf-cookie").then(async (res) => {
@@ -126,6 +151,23 @@ export const actions = {
         const response = await this.$axios.$get("/auth").then((res) => {
           console.log(res);
           if (res.result == false) {
+            this.$router.push("/login");
+          }
+        });
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  async hasScreenName() {
+    try {
+      await this.$axios.$get("/sanctum/csrf-cookie").then(async (res) => {
+        const response = await this.$axios.$get("/screen-name").then((res) => {
+          if (res.result == true) {
+            this.$router.push("/home");
+          } else if (res.result == false) {
+            this.$router.push("/register-screen-name");
+          } else {
             this.$router.push("/login");
           }
         });
@@ -164,7 +206,7 @@ export const actions = {
             params: payload.params,
           })
           .then((res) => {
-            this.$router.replace("/test");
+            this.$router.replace("/sns-login");
           });
       });
     } catch (error) {
@@ -179,7 +221,7 @@ export const actions = {
             params: payload.params,
           })
           .then((res) => {
-            this.$router.replace("/test");
+            this.$router.replace("/sns-login");
           });
       });
     } catch (error) {

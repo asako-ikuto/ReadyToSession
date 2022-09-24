@@ -40,7 +40,7 @@
 export default {
   name: "AddArtistPage",
   layout: "adminDefault",
-  middleware: ["admin", "auth"],
+  middleware: ["admin", "isauth"],
   data: () => ({
     name: "",
     //バリデーション

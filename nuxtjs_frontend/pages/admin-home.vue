@@ -57,7 +57,7 @@
 export default {
   name: "LoginPage",
   layout: "beforeLogin",
-  middleware: ["admin", "auth"],
+  middleware: ["admin"],
   data: () => ({}),
   methods: {
     async logout() {
