@@ -1,12 +1,12 @@
 <template>
-  <div class="google-callback">認証中</div>
+  <div class="google-callback"></div>
 </template>
 
 <script>
 export default {
   name: "GoogleCallbackPage",
   layout: "beforeLogin",
-  // auth: false,
+  auth: false,
   mounted() {
     this.$store.dispatch("googleLoginCallback", { params: this.$route.query });
   },

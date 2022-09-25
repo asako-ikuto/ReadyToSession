@@ -64,7 +64,6 @@ export const actions = {
               await this.$axios
                 .$get("/sanctum/csrf-cookie")
                 .then(async (res) => {
-                  console.log(res);
                   const response = await this.$axios.$get(
                     "/playablelists/detail"
                   );
@@ -83,7 +82,6 @@ export const actions = {
     try {
       await this.$axios.$get("/sanctum/csrf-cookie").then(async (res) => {
         const response = await this.$axios.$get("/playablelists");
-        console.log(response);
         commit("setPlayableList", response);
       });
     } catch (error) {
@@ -94,7 +92,6 @@ export const actions = {
     try {
       await this.$axios.$get("/sanctum/csrf-cookie").then(async (res) => {
         const response = await this.$axios.$get("/playablelists/detail");
-        console.log(response);
         commit("setPlayableListDetail", response);
       });
     } catch (error) {
@@ -117,7 +114,6 @@ export const actions = {
             "/playablelists/" + payload.userId
           );
           commit("setUserPlayableList", userPlayableList.data);
-          console.log(userPlayableList);
         })
         .then(async (res) => {
           try {
@@ -126,7 +122,6 @@ export const actions = {
                 "/playablelists/detail"
               );
               commit("setPlayableListDetail", myPlayableList);
-              console.log(myPlayableList);
             });
           } catch (error) {
             console.log(error);

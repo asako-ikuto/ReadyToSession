@@ -40,19 +40,6 @@
                       <v-list-item-action-text>{{
                         $dateFns.format(new Date(song.updated_at), "yyyy.MM.dd")
                       }}</v-list-item-action-text>
-                      <v-list-item-action-text>
-                        <v-icon
-                          @click="addToPlayablelist(song.id)"
-                          v-if="
-                            !playableSongs.find(
-                              (playableSong) => playableSong.id === song.id
-                            )
-                          "
-                          color="success"
-                        >
-                          mdi-plus-circle
-                        </v-icon>
-                      </v-list-item-action-text>
                     </v-list-item-action>
                   </v-list-item>
                 </template>
@@ -130,23 +117,6 @@
                             )
                           }}
                         </td>
-                        <td class="text-left">
-                          <v-btn
-                            elevation="2"
-                            class="px-10"
-                            color="success"
-                            rounded
-                            @click="addToPlayablelist(song.id)"
-                            v-if="
-                              !playableSongs.find(
-                                (playableSong) => playableSong.id === song.id
-                              )
-                            "
-                          >
-                            <v-icon left>mdi-plus</v-icon
-                            >演奏できる曲リストに追加
-                          </v-btn>
-                        </td>
                       </tr>
                     </tbody>
                   </template>
@@ -186,7 +156,7 @@
 <script>
 export default {
   name: "UserSonglistPage",
-  middleware: ["auth"],
+  middleware: ["isauth"],
   async fetch() {
     const userId = this.$store.getters["playablelists/userId"];
     await this.$store.dispatch("playablelists/showUserPlayableList", {

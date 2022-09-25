@@ -127,7 +127,7 @@
 export default {
   name: "ArtistlistPage",
   layout: "adminDefault",
-  middleware: ["auth", "admin"],
+  middleware: ["admin"],
   async fetch() {
     await this.$store.dispatch("artists/fetchArtistList");
   },

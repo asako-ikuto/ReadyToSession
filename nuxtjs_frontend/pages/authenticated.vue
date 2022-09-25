@@ -34,6 +34,7 @@
 export default {
   name: "AuthenticatedPage",
   layout: "beforeLogin",
+  middleware: ["isauth"],
   data: () => ({}),
 };
 </script>

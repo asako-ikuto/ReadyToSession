@@ -40,7 +40,7 @@
 export default {
   name: "EditArtistPage",
   layout: "adminDefault",
-  middleware: ["admin", "auth"],
+  middleware: ["admin"],
   mounted() {
     //バリデーションリセット
     this.$refs.editArtist.resetValidation();

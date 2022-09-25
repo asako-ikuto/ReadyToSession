@@ -1,11 +1,5 @@
 <template>
-  <div>
-    <li>
-      <ul>
-        sns-login
-      </ul>
-    </li>
-  </div>
+  <div></div>
 </template>
 
 <script>

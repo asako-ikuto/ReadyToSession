@@ -120,7 +120,6 @@ export default {
     },
     twitterLogin() {
       this.$store.dispatch("twitterLogin");
-      // this.$router.push("/auth/twitter/redirect");
     },
     googleLogin() {
       this.$store.dispatch("googleLogin");

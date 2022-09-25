@@ -148,7 +148,7 @@
 export default {
   name: "SonglistPage",
   layout: "adminDefault",
-  middleware: ["admin", "auth"],
+  middleware: ["admin"],
   async fetch() {
     await this.$store.dispatch("songs/fetchSongList");
   },

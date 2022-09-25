@@ -67,7 +67,6 @@ export default {
   methods: {
     registerScreenName() {
       if (this.$refs.registerScreenName.validate()) {
-        console.log(this.screenName);
         this.$store.dispatch("registerScreenName", {
           screenName: this.screenName,
         });

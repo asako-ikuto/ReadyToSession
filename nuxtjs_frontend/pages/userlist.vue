@@ -17,9 +17,6 @@
         <v-col cols="12">
           <template v-for="(user, index) in filteredUsers" :search="searchText">
             <v-list-item :key="index" @click="setUser(user.id, user.name)">
-              <!-- <v-list-item-avatar>
-                <v-img :src="user.avatarLink" contain />
-              </v-list-item-avatar> -->
               <v-list-item-content>
                 <v-list-item-title>{{ user.name }}</v-list-item-title>
                 <v-list-item-subtitle>{{
@@ -39,7 +36,7 @@
           <v-text-field
             v-model="searchText"
             outlined
-            label="ユーザ名またはアカウントID"
+            label="ユーザ名またはユーザID"
             prepend-inner-icon="mdi-magnify"
             class="d-inline-block mr-4"
             style="min-width: 450px"
@@ -54,7 +51,7 @@
               <thead>
                 <tr>
                   <th class="text-left">ユーザ名</th>
-                  <th class="text-left">アカウントID</th>
+                  <th class="text-left">ユーザID</th>
                   <th class="text-left"></th>
                 </tr>
               </thead>
@@ -78,26 +75,6 @@
               </tbody>
             </template>
           </v-simple-table>
-          <!-- <v-data-table
-            :headers="headers"
-            :items="users"
-            :items-per-page="5"
-            :search="searchText"
-            class="elevation-1"
-          >
-            <template v-slot:item.actions="{ item }">
-              <v-btn
-                elevation="2"
-                class="px-10"
-                color="success"
-                rounded
-                @click="setUser(item.id, item.name)"
-              >
-                <v-icon left>mdi-arrow-right-drop-circle-outline</v-icon
-                >演奏できる曲リスト
-              </v-btn>
-            </template>
-          </v-data-table> -->
         </v-col>
       </v-row>
     </v-container>
@@ -107,7 +84,7 @@
 <script>
 export default {
   name: "UserlistPage",
-  middleware: ["auth"],
+  middleware: ["isauth"],
   async fetch() {
     await this.$store.dispatch("users/fetchUserList");
   },

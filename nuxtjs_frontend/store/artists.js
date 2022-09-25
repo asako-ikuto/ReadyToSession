@@ -70,7 +70,6 @@ export const actions = {
             } else {
               commit("clearErrors");
               this.$router.push("/artistlist");
-              console.log(res);
             }
           });
       });

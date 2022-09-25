@@ -25,7 +25,7 @@ export default {
   name: "SendEmailPage",
   layout: "beforeLogin",
   data: () => ({
-    email: "testtest@test.com",
+    email: "",
   }),
 };
 </script>

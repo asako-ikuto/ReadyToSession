@@ -15,7 +15,7 @@
               :error="errors.name"
               :error-messages="messages.name"
               :counter="50"
-              label="名前"
+              label="ユーザ名"
               prepend-icon="mdi-badge-account-horizontal-outline"
               required
             ></v-text-field>

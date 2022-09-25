@@ -52,7 +52,7 @@
 export default {
   name: "EditSongPage",
   layout: "adminDefault",
-  middleware: ["admin", "auth"],
+  middleware: ["admin"],
   mounted() {
     //バリデーションリセット
     this.$refs.editSong.resetValidation();

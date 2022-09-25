@@ -81,7 +81,6 @@ export const actions = {
             password: payload.password,
           })
           .then(async (res) => {
-            console.log(res);
             if (res.status == 400) {
               commit("setErrors", {
                 errors: res.errors,
@@ -97,7 +96,6 @@ export const actions = {
                 })
                 .then((res) => {
                   this.$router.push("/home");
-                  console.log(res);
                 });
             }
           });
@@ -107,8 +105,6 @@ export const actions = {
     }
   },
   async registerScreenName({ commit }, payload) {
-    console.log(payload.screenName);
-
     try {
       await this.$axios.$get("/sanctum/csrf-cookie").then(async (res) => {
         const response = await this.$axios
@@ -116,7 +112,6 @@ export const actions = {
             screen_name: payload.screenName,
           })
           .then(async (res) => {
-            console.log(res);
             if (res.status == 400) {
               commit("setErrors", {
                 errors: res.errors,
@@ -135,13 +130,13 @@ export const actions = {
     try {
       await this.$axios.$get("/sanctum/csrf-cookie").then(async (res) => {
         const response = await this.$axios.$get("/admin").then((res) => {
-          console.log(res);
           if (res.result == false) {
             this.$router.push("/login");
           }
         });
       });
     } catch (error) {
+      this.$router.push("/login");
       console.log(error);
     }
   },
@@ -149,13 +144,13 @@ export const actions = {
     try {
       await this.$axios.$get("/sanctum/csrf-cookie").then(async (res) => {
         const response = await this.$axios.$get("/auth").then((res) => {
-          console.log(res);
-          if (res.result == false) {
+          if (res.result !== true) {
             this.$router.push("/login");
           }
         });
       });
     } catch (error) {
+      this.$router.push("/login");
       console.log(error);
     }
   },
@@ -180,7 +175,6 @@ export const actions = {
     try {
       await this.$axios.$get("/sanctum/csrf-cookie").then(async (res) => {
         const response = await this.$axios.$get("/login/twitter");
-        console.log(response);
         window.location.href = response;
       });
     } catch (error) {
@@ -191,7 +185,6 @@ export const actions = {
     try {
       await this.$axios.$get("/sanctum/csrf-cookie").then(async (res) => {
         const response = await this.$axios.$get("/login/google");
-        console.log(response);
         window.location.href = response;
       });
     } catch (error) {
