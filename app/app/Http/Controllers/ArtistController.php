@@ -33,7 +33,6 @@ class ArtistController extends Controller
         }
     }
 
-    //以下、管理者のみ実行可能
     public function update(ArtistRequest $request, $id)
     {
         if(Artist::where('id', $id)->exists()){

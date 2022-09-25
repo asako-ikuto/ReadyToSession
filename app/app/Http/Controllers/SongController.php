@@ -42,7 +42,6 @@ class SongController extends Controller
         }
     }
 
-    //以下、管理者のみ実行可能
     public function update(SongRequest $request, $id)
     {
         if(Song::where('id', $id)->exists()){

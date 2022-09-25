@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Log;
 use App\User;
 use App\IdentityProvider;
 
-
 class LoginController extends Controller
 {
     public function login(Request $request)
@@ -60,7 +59,6 @@ class LoginController extends Controller
     public function hasScreenName()
     {
         $screen_name = auth()->user()->screen_name;
-
         if($screen_name) {
             return response()->json(['result' => true], 200);
 
@@ -74,7 +72,7 @@ class LoginController extends Controller
         try {
             return Socialite::driver($social)->redirect()->getTargetUrl();
         } catch (\Exception $e) {
-            Log::debug($e);
+            abort(500, $e->getMessage());
         }
     }
 
@@ -95,13 +93,10 @@ class LoginController extends Controller
         $account = IdentityProvider::whereProviderName($provider)
                     ->whereProviderId($providerUser->getId())
                     ->first();
-
         if ($account) {
             return $account->user;
         } else {
-
             $user = User::whereEmail($providerUser->getEmail())->first();
-
             if (!$user) {
                 if($provider == 'google'){
                     $user = User::create([
@@ -115,68 +110,11 @@ class LoginController extends Controller
                     ]);
                 }
             }
-
             $user->IdentityProviders()->create([
                 'provider_id'   => $providerUser->getId(),
                 'provider_name' => $provider,
             ]);
-
             return $user;
         }
-
-
-
-        // $existingUser = User::whereEmail($providerUser->getEmail())->first();
-
-        // if($existingUser) {
-        //     $user = DB::transaction(function () use ($existingUser, $providerUser, $provider) {
-        //         $existingUser->IdentityProviders()->create([
-        //             'provider_id'   => $providerUser->getId(),
-        //             'provider_name' => $provider,
-        //         ]);
-
-        //         return $existingUser;
-        //     });
-        // } else {
-        //     $user =
-        //     DB::transaction(function () use ($providerUser, $provider) {
-        //         $providerUserName = $providerUser->getName() ? $providerUser->getName() : $providerUser->getNickname();
-        //         $user = User::create([
-        //             'email' => $providerUser->getEmail(),
-        //             'name'  => $providerUserName,
-        //         ]);
-        //         $user->IdentityProviders()->create([
-        //             'provider_id'   => $providerUser->getId(),
-        //             'provider_name' => $provider,
-        //         ]);
-
-        //         return $user;
-        //     });
-        // }
     }
-
-    // public function findOrCreateUser($provider){
-    //     $userSocial = Socialite::driver($provider)->stateless()->user();
-    //     $userAcount = User::where(['email' => $userSocial->getEmail()])->first();
-
-    //     if($userAcount){
-    //         $user = User::find($userAcount->getAttribute('id'));
-    //         Auth::login($userAcount);
-    //     } else {
-    //         $user = User::create([
-    //             'name'          => $userSocial->getName(),
-    //             'email'         => $userSocial->getEmail(),
-    //         ]);
-
-    //         $user->IdentityProviders()->create([
-    //             'provider_id'   => $userSocial->getId(),
-    //             'provider_name' => $provider,
-    //         ]);
-    //     }
-
-    //     return [
-    //         'user'  => $user,
-    //         // 'access_token' => $user->createToken('user')->plainTextToken,
-    //     ];
-    // }
 }

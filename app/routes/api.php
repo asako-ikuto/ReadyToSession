@@ -15,12 +15,5 @@ use App\Http\Controllers\Api\Auth\RegisterController;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
 
 
-Route::post('/register', 'RegisterController@create');
-// Route::get('/hello', 'HelloController@index');
-
-Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');

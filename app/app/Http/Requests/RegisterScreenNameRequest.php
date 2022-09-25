@@ -15,7 +15,11 @@ class RegisterScreenNameRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        if ($this->path() == 'register-screen-name') {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**

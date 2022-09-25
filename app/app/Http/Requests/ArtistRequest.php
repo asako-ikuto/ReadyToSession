@@ -51,11 +51,6 @@ class ArtistRequest extends FormRequest
 
     protected function failedValidation(Validator $validator)
     {
-        // $res = response()->json([
-        //     'errors' => $validator->errors(),
-        // ], 400);
-        // throw new HttpResponseException($res);
-
         $response['status']  = 400;
         $response['statusText'] = 'Failed validation.';
         $response['errors']  = $validator->errors();
