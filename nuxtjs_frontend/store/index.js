@@ -126,51 +126,6 @@ export const actions = {
       console.log(error);
     }
   },
-  async isAdmin() {
-    try {
-      await this.$axios.$get("/sanctum/csrf-cookie").then(async (res) => {
-        const response = await this.$axios.$get("/admin").then((res) => {
-          if (res.result == false) {
-            this.$router.push("/login");
-          }
-        });
-      });
-    } catch (error) {
-      this.$router.push("/login");
-      console.log(error);
-    }
-  },
-  async isAuth() {
-    try {
-      await this.$axios.$get("/sanctum/csrf-cookie").then(async (res) => {
-        const response = await this.$axios.$get("/auth").then((res) => {
-          if (res.result !== true) {
-            this.$router.push("/login");
-          }
-        });
-      });
-    } catch (error) {
-      this.$router.push("/login");
-      console.log(error);
-    }
-  },
-  async hasScreenName() {
-    try {
-      await this.$axios.$get("/sanctum/csrf-cookie").then(async (res) => {
-        const response = await this.$axios.$get("/screen-name").then((res) => {
-          if (res.result == true) {
-            this.$router.push("/home");
-          } else if (res.result == false) {
-            this.$router.push("/register-screen-name");
-          } else {
-            this.$router.push("/login");
-          }
-        });
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  },
   async twitterLogin() {
     try {
       await this.$axios.$get("/sanctum/csrf-cookie").then(async (res) => {

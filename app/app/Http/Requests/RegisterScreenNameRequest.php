@@ -41,7 +41,7 @@ class RegisterScreenNameRequest extends FormRequest
             'screen_name.string' => ':attributeは文字を入力してください',
             'screen_name.max' => ':attributeは15文字以内です',
             'screen_name.min' => ':attributeは4文字以上です',
-            'screen_name.unique' => ':attributeは既に登録されています',
+            'screen_name.unique' => '別の:attributeを入力してください',
         ];
     }
 

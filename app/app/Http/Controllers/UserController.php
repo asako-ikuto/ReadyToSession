@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::where("id" , "!=" , auth()->user()->id)->get()->toJson(JSON_PRETTY_PRINT);
+        $users = User::where("id" , "!=" , auth()->user()->id)->where("screen_name" , "!=" , null)->get()->toJson(JSON_PRETTY_PRINT);
         return $users;
     }
 

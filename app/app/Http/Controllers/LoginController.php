@@ -104,10 +104,24 @@ class LoginController extends Controller
                         'name'  => $providerUser->getName(),
                     ]);
 
+                    $user->IdentityProviders()->create([
+                        'provider_id'   => $providerUser->getId(),
+                        'provider_name' => $provider,
+                    ]);
+
+                    return $user;
+
                 } else if($provider == 'twitter'){
                     $user = User::create([
                         'name'  => $providerUser->getName(),
                     ]);
+
+                    $user->IdentityProviders()->create([
+                        'provider_id'   => $providerUser->getId(),
+                        'provider_name' => $provider,
+                    ]);
+
+                    return $user;
                 }
             }
             $user->IdentityProviders()->create([
