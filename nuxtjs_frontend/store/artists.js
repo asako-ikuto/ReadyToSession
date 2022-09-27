@@ -47,10 +47,8 @@ export const mutations = {
 export const actions = {
   async fetchArtistList({ commit }) {
     try {
-      await this.$axios.$get("/sanctum/csrf-cookie").then(async (res) => {
-        const response = await this.$axios.$get("/artists");
-        commit("setArtistList", response);
-      });
+      const response = await this.$axios.$get("/artists");
+      commit("setArtistList", response);
     } catch (error) {
       console.log(error);
     }

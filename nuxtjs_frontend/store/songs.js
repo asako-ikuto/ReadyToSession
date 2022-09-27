@@ -58,10 +58,8 @@ export const mutations = {
 export const actions = {
   async fetchSongList({ commit }) {
     try {
-      await this.$axios.$get("/sanctum/csrf-cookie").then(async (res) => {
-        const response = await this.$axios.$get("/songs");
-        commit("setSongList", response);
-      });
+      const response = await this.$axios.$get("/songs");
+      commit("setSongList", response);
     } catch (error) {
       console.log(error);
     }
@@ -82,13 +80,9 @@ export const actions = {
             } else {
               commit("clearErrors");
               try {
-                await this.$axios
-                  .$get("/sanctum/csrf-cookie")
-                  .then(async (res) => {
-                    const response = await this.$axios.$get("/songs");
-                    commit("setSongList", response);
-                    this.$router.push("/songlist");
-                  });
+                const response = await this.$axios.$get("/songs");
+                commit("setSongList", response);
+                this.$router.push("/songlist");
               } catch (error) {
                 console.log(error);
               }
