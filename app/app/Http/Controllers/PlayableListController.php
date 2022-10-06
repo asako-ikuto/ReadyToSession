@@ -8,6 +8,7 @@ use App\Song;
 use Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\PlayableListRequest;
+use Illuminate\Support\Facades\Log;
 
 class PlayableListController extends Controller
 {
@@ -30,8 +31,9 @@ class PlayableListController extends Controller
     public function userPlayableList($user_id)
     {
         $user = User::find($user_id);
-        $playable_list = $user->playable_lists()->select('songs.id', 'songs.name', 'playable_lists.updated_at as updated_at', 'artists.id as artist_id', 'artists.name as artist_name')->join('artists', 'songs.artist_id', '=', 'artists.id')->get()->toJson(JSON_PRETTY_PRINT);
-        return $playable_list;
+        $user_name = $user->name;
+        $playable_list = $user->playable_lists()->select('songs.id', 'songs.name', 'playable_lists.updated_at as updated_at', 'artists.id as artist_id', 'artists.name as artist_name')->join('artists', 'songs.artist_id', '=', 'artists.id')->get();
+        return response()->json(["playable_list" => $playable_list, "user_name" => $user_name]);
     }
 
     public function store($song_id)

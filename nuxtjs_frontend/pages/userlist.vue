@@ -16,7 +16,7 @@
         </v-col>
         <v-col cols="12">
           <template v-for="(user, index) in filteredUsers" :search="searchText">
-            <v-list-item :key="index" @click="setUser(user.id, user.name)">
+            <v-list-item :key="index" @click="setUser2(user.id)">
               <v-list-item-content>
                 <v-list-item-title>{{ user.name }}</v-list-item-title>
                 <v-list-item-subtitle>{{
@@ -113,6 +113,9 @@ export default {
         userId: userId,
         userName: userName,
       });
+    },
+    setUser2(userId) {
+      this.$router.push("/user-playablelist/?id=" + userId);
     },
   },
 };

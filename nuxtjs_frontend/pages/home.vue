@@ -20,8 +20,8 @@
       </v-col>
       <v-col cols="12" style="margin-bottom: 200px">
         <v-list two-line>
-          <template v-for="(song, index) in playableSongs">
-            <v-list-item :key="index">
+          <template>
+            <v-list-item v-for="song in playableSongs" v-bind:key="song.id">
               <v-list-item-content>
                 <v-list-item-title>{{ song.name }}</v-list-item-title>
                 <v-list-item-subtitle>{{
@@ -123,8 +123,9 @@
 export default {
   name: "HomePage",
   middleware: ["isauth"],
-  async fetch() {
-    await this.$store.dispatch("playablelists/fetchPlayableListDetail");
+  async fetch({ store }) {
+    //await this.$store.dispatch("playablelists/fetchPlayableListDetail");
+    await store.dispatch("playablelists/fetchPlayableListDetail");
   },
   data: () => ({
     searchText: "",
