@@ -38,7 +38,7 @@
                     </v-list-item-content>
                     <v-list-item-action>
                       <v-list-item-action-text>{{
-                        $dateFns.format(new Date(song.updated_at), "yyyy.MM.dd")
+                        $dateFns.format(song.updated_at, "yyyy.MM.dd")
                       }}</v-list-item-action-text>
                     </v-list-item-action>
                   </v-list-item>
@@ -158,10 +158,14 @@ export default {
   name: "UserSonglistPage",
   middleware: ["isauth"],
   async fetch() {
-    const userId = this.$store.getters["playablelists/userId"];
+    const userId = this.$route.query.id;
     await this.$store.dispatch("playablelists/showUserPlayableList", {
       userId: userId,
     });
+    // const userId = this.$store.getters["playablelists/userId"];
+    // await this.$store.dispatch("playablelists/showUserPlayableList", {
+    //   userId: userId,
+    // });
   },
   data: () => ({
     searchText: "",
