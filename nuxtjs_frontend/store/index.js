@@ -128,50 +128,42 @@ export const actions = {
   },
   async twitterLogin() {
     try {
-      await this.$axios.$get("/sanctum/csrf-cookie").then(async (res) => {
-        const response = await this.$axios.$get("/login/twitter");
-        window.location.href = response;
-      });
+      const response = await this.$axios.$get("/login/twitter");
+      window.location.href = response;
     } catch (error) {
       console.log(error);
     }
   },
   async googleLogin() {
     try {
-      await this.$axios.$get("/sanctum/csrf-cookie").then(async (res) => {
-        const response = await this.$axios.$get("/login/google");
-        window.location.href = response;
-      });
+      const response = await this.$axios.$get("/login/google");
+      window.location.href = response;
     } catch (error) {
       console.log(error);
     }
   },
   async twitterLoginCallback({ commit }, payload) {
     try {
-      await this.$axios.$get("/sanctum/csrf-cookie").then(async (res) => {
-        const response = await this.$axios
-          .$get("login/twitter/callback", {
-            params: payload.params,
-          })
-          .then((res) => {
-            this.$router.replace("/sns-login");
-          });
-      });
+      const response = await this.$axios
+        .$get("login/twitter/callback", {
+          params: payload.params,
+        })
+        .then((res) => {
+          this.$router.replace("/sns-login");
+        });
     } catch (error) {
       console.log(error);
     }
   },
   async googleLoginCallback({ commit }, payload) {
     try {
-      await this.$axios.$get("/sanctum/csrf-cookie").then(async (res) => {
-        const response = await this.$axios
-          .$get("login/google/callback", {
-            params: payload.params,
-          })
-          .then((res) => {
-            this.$router.replace("/sns-login");
-          });
-      });
+      const response = await this.$axios
+        .$get("login/google/callback", {
+          params: payload.params,
+        })
+        .then((res) => {
+          this.$router.replace("/sns-login");
+        });
     } catch (error) {
       console.log(error);
     }

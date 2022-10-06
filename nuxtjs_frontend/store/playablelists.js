@@ -80,20 +80,16 @@ export const actions = {
   },
   async fetchPlayableList({ commit }) {
     try {
-      await this.$axios.$get("/sanctum/csrf-cookie").then(async (res) => {
-        const response = await this.$axios.$get("/playablelists");
-        commit("setPlayableList", response);
-      });
+      const response = await this.$axios.$get("/playablelists");
+      commit("setPlayableList", response);
     } catch (error) {
       console.log(error);
     }
   },
   async fetchPlayableListDetail({ commit }) {
     try {
-      await this.$axios.$get("/sanctum/csrf-cookie").then(async (res) => {
-        const response = await this.$axios.$get("/playablelists/detail");
-        commit("setPlayableListDetail", response);
-      });
+      const response = await this.$axios.$get("/playablelists/detail");
+      commit("setPlayableListDetail", response);
     } catch (error) {
       console.log(error);
     }
@@ -107,26 +103,12 @@ export const actions = {
   },
   async showUserPlayableList({ commit }, payload) {
     try {
-      await this.$axios
-        .$get("/sanctum/csrf-cookie")
-        .then(async (res) => {
-          const userPlayableList = await this.$axios.get(
-            "/playablelists/" + payload.userId
-          );
-          commit("setUserPlayableList", userPlayableList.data);
-        })
-        .then(async (res) => {
-          try {
-            await this.$axios.$get("/sanctum/csrf-cookie").then(async (res) => {
-              const myPlayableList = await this.$axios.$get(
-                "/playablelists/detail"
-              );
-              commit("setPlayableListDetail", myPlayableList);
-            });
-          } catch (error) {
-            console.log(error);
-          }
-        });
+      const userPlayableList = await this.$axios.get(
+        "/playablelists/" + payload.userId
+      );
+      commit("setUserPlayableList", userPlayableList.data);
+      const myPlayableList = await this.$axios.$get("/playablelists/detail");
+      commit("setPlayableListDetail", myPlayableList);
     } catch (error) {
       console.log(error);
     }
